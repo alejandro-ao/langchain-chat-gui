@@ -21,7 +21,7 @@ else:
     print("OPENAI_API_KEY is set")
     
 
-chat = ChatOpenAI(temperature=0)
+chat = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
 st.header("Your own ChatGPT 🤖")
 
@@ -34,7 +34,6 @@ if user_input:
     st.session_state.messages.append(HumanMessage(content=user_input))
     response = chat(st.session_state.messages)
     st.session_state.messages.append(AIMessage(content=response.content))
-    user_input = st.text_input("You:", value="")
     
 
 messages = st.session_state.get('messages', [])
